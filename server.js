@@ -12,6 +12,14 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use((req, res, next) => {
+  res.set({
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "content-type"
+  })
+  next()
+})
+
 //静态资源托管处理
 app.use(express.static('./public'))
 

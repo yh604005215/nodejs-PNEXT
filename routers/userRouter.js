@@ -3,14 +3,13 @@ const {register, login, emailCode, getInfo} = require('../controllers/userContro
 const router = express.Router()
 const auth = require('../middlewares/auth')
 
-
 /**  
  * @api {post} http://localhost:3000/pnext/register 注册
  * @apiGroup user
  *
  * @apiParam {String} email 用户邮箱
  * @apiParam {String} password  用户密码
- * @apiParam {String} eCode 邮箱验证码 \
+ * @apiParam {String} eCode 邮箱验证码 
  * @apiParam {String} time 时间戳
  * 
  * @apiSuccess {Number} code  错误状态码
@@ -27,10 +26,11 @@ router.post('/register', register)
  * @apiParam {String} email 用户邮箱
  *  @apiParam {String} time 时间戳
  * @apiSuccess {Number} code  错误状态码
+ * @apiSuccess {Number} ms  可重发秒速
  * @apiSuccess {String} msg 错误消息
 */
 
-router.post('/emailCode',emailCode)
+router.post('/emailCode', emailCode)
 
 /**  
  * @api {post} http://localhost:3000/pnext/login 登录 
@@ -43,7 +43,7 @@ router.post('/emailCode',emailCode)
  * @apiSuccess {String} msg 错误消息
  * @apiSuccess {String} token token
 */
-router.post('/login',login)
+router.post('/login', login)
 
 /**  
  * @api {get} http://localhost:3000/pnext/getInfo 获取当前登录用户的基本信息
